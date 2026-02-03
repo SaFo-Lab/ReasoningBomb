@@ -81,7 +81,7 @@ bash scripts/4_train_grpo.sh --puzzle_max_len 128
 
 We provide a sample dataset of adversarial puzzles in `data/sample_puzzles.json` containing 30 puzzles (10 per token budget category: 128, 256, 512). These can be used for testing and demonstration purposes.
 
-The full dataset is available on [HuggingFace](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb).
+The dataset is also available on [HuggingFace](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb).
 
 ## Project Structure
 

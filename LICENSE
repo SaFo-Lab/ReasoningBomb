@@ -22,16 +22,14 @@ subject to the following conditions:
    that make use of this Software must cite the original paper:
 
    @misc{liu2026reasoningbombstealthydenialofserviceattack,
-     title={ReasoningBomb: A Stealthy Denial-of-Service Attack by Inducing
-            Pathologically Long Reasoning in Large Reasoning Models},
-     author={Xiaogeng Liu and Xinyan Wang and Yechao Zhang and Sanjay Kariyappa
-             and Chong Xiang and Muhao Chen and G. Edward Suh and Chaowei Xiao},
-     year={2026},
-     eprint={2602.00154},
-     archivePrefix={arXiv},
-     primaryClass={cs.CR},
-     url={https://arxiv.org/abs/2602.00154},
-   }
+      title={ReasoningBomb: A Stealthy Denial-of-Service Attack by Inducing Pathologically Long Reasoning in Large Reasoning Models}, 
+      author={Xiaogeng Liu and Xinyan Wang and Yechao Zhang and Sanjay Kariyappa and Chong Xiang and Muhao Chen and G. Edward Suh and Chaowei Xiao},
+      year={2026},
+      eprint={2602.00154},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2602.00154}, 
+      }
 
 4. NO MALICIOUS USE: The Software shall not be used to:
    - Attack or disrupt any commercial or public AI services

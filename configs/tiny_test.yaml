@@ -1,0 +1,100 @@
+# =============================================================================
+# ReasoningBomb - Tiny Test Configuration
+# =============================================================================
+# Minimal settings for quickly verifying the pipeline runs correctly.
+# Uses small models and minimal data for fast iteration.
+#
+# Usage:
+#   CONFIG_FILE=configs/tiny_test.yaml bash scripts/1_train_predictor.sh
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Model Paths (small models for testing)
+# -----------------------------------------------------------------------------
+models:
+  attacker: "Qwen/Qwen2.5-0.5B-Instruct"
+  victim: "Qwen/Qwen2.5-0.5B-Instruct"
+  embedding: "Qwen/Qwen3-Embedding-0.6B"
+
+# -----------------------------------------------------------------------------
+# Output Directories
+# -----------------------------------------------------------------------------
+paths:
+  output_dir: "./outputs_test"
+  predictor_dir: "predictor"
+  warmstart_dir: "warmstart"
+  checkpoints_dir: "checkpoints"
+  logs_dir: "logs"
+  hf_cache: null
+
+# -----------------------------------------------------------------------------
+# Length Predictor - TINY (vs paper: 1000 puzzles, 100 epochs)
+# -----------------------------------------------------------------------------
+predictor:
+  num_puzzles: 10
+  max_reasoning_tokens: 512
+  mlp_hidden_dim: 256
+  mlp_intermediate_dim: 128
+  epochs: 5
+  learning_rate: 0.001
+  batch_size: 4
+  length_mean: 6.0
+  length_std: 2.0
+  server_port: 8000
+
+# -----------------------------------------------------------------------------
+# Warm Start - TINY (vs paper: 100 samples, 20 epochs)
+# -----------------------------------------------------------------------------
+warmstart:
+  samples_per_category: 5
+  categories:
+    length_64: [0, 64]
+    length_128: [65, 128]
+  sft_epochs: 2
+  sft_learning_rate: 0.0001
+  sft_batch_size: 1
+  gradient_accumulation_steps: 1
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+
+# -----------------------------------------------------------------------------
+# GRPO Training - TINY (vs paper: 150 epochs, batch 48)
+# -----------------------------------------------------------------------------
+training:
+  max_puzzle_tokens: 64
+  train_batch_size: 4
+  rollout_batch_size: 2
+  ppo_mini_batch_size: 2
+  max_prompt_length: 128
+  max_response_length: 256
+  learning_rate: 0.00001
+  kl_loss_coef: 0.04
+  clip_param: 0.2
+  entropy_coeff: 0
+  enable_diversity: false  # Disable for simpler testing
+  diversity_weight: 0.0
+  total_epochs: 2
+  save_freq: 1
+  test_freq: 1
+  predictor_port: 8000
+  embedding_port: 8001
+
+# -----------------------------------------------------------------------------
+# GPU Allocation (single GPU testing)
+# -----------------------------------------------------------------------------
+gpus:
+  predictor: "0"
+  embedding: "0"
+  training: "0"
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+logging:
+  use_wandb: false
+  wandb_project: "rbomb-test"
+  wandb_entity: null
+  log_level: "DEBUG"

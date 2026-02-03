@@ -1,0 +1,33 @@
+# Core dependencies
+torch>=2.4.0
+transformers>=4.44.0
+accelerate>=0.33.0
+datasets>=2.20.0
+sentencepiece>=0.2.0
+
+# verl framework (install separately)
+# pip install verl
+
+# Inference
+vllm>=0.5.0
+
+# Embedding model
+sentence-transformers>=3.0.0
+
+# Server
+flask>=3.0.0
+requests>=2.32.0
+
+# Utilities
+numpy>=1.26.0
+scipy>=1.13.0
+tqdm>=4.66.0
+pyyaml>=6.0.0
+
+# Logging
+wandb>=0.17.0
+tensorboard>=2.17.0
+
+# Optional: Flash Attention 2 (for faster inference)
+# pip install flash-attn --no-build-isolation
+

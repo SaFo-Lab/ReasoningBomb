@@ -1,0 +1,55 @@
+ReasoningBomb Research License
+
+Copyright (c) 2026 The Authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use
+the Software for academic research and defensive security purposes only,
+subject to the following conditions:
+
+1. RESEARCH USE ONLY: This Software is provided solely for academic research
+   and defensive security purposes. Any use of this Software for malicious
+   purposes, including but not limited to conducting denial-of-service attacks
+   against production systems or services without explicit authorization, is
+   strictly prohibited.
+
+2. ATTRIBUTION: Redistributions of source code or binary form must reproduce
+   the above copyright notice, this list of conditions, and the following
+   disclaimer in the documentation and/or other materials provided with the
+   distribution.
+
+3. CITATION: Any publications, presentations, or other public disclosures
+   that make use of this Software must cite the original paper:
+
+   @misc{liu2026reasoningbombstealthydenialofserviceattack,
+     title={ReasoningBomb: A Stealthy Denial-of-Service Attack by Inducing
+            Pathologically Long Reasoning in Large Reasoning Models},
+     author={Xiaogeng Liu and Xinyan Wang and Yechao Zhang and Sanjay Kariyappa
+             and Chong Xiang and Muhao Chen and G. Edward Suh and Chaowei Xiao},
+     year={2026},
+     eprint={2602.00154},
+     archivePrefix={arXiv},
+     primaryClass={cs.CR},
+     url={https://arxiv.org/abs/2602.00154},
+   }
+
+4. NO MALICIOUS USE: The Software shall not be used to:
+   - Attack or disrupt any commercial or public AI services
+   - Cause financial harm to AI service providers
+   - Degrade service quality for legitimate users
+   - Conduct unauthorized security testing
+
+5. RESPONSIBLE DISCLOSURE: Users who discover vulnerabilities using this
+   Software should follow responsible disclosure practices and notify affected
+   parties before public disclosure.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+For inquiries regarding commercial use or other licensing arrangements,
+please contact: xliu316@jhu.edu, chaoweixiao@jhu.edu

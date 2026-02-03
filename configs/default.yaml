@@ -1,0 +1,148 @@
+# =============================================================================
+# ReasoningBomb - Default Configuration
+# =============================================================================
+# Training configuration aligned with paper (Appendix: Implementation Details)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Model Paths
+# -----------------------------------------------------------------------------
+models:
+  # Attacker model (generates adversarial prompts)
+  attacker: "Qwen/Qwen3-8B"
+  
+  # Victim model (target of attack, used for length predictor training)
+  victim: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+  
+  # Embedding model (for diversity reward computation)
+  embedding: "Qwen/Qwen3-Embedding-8B"
+
+# -----------------------------------------------------------------------------
+# Output Directories
+# -----------------------------------------------------------------------------
+paths:
+  output_dir: "./outputs"
+  predictor_dir: "predictor"
+  warmstart_dir: "warmstart"
+  checkpoints_dir: "checkpoints"
+  logs_dir: "logs"
+  hf_cache: null  # null = use default (~/.cache/huggingface)
+
+# -----------------------------------------------------------------------------
+# Length Predictor Configuration
+# Paper: "We generate a set of N puzzles (default N=1000)"
+# -----------------------------------------------------------------------------
+predictor:
+  # Number of puzzles for training
+  num_puzzles: 1000
+  
+  # Max reasoning tokens per puzzle
+  max_reasoning_tokens: 16384
+  
+  # MLP architecture: hidden_dim → 1024 → 512 → 1
+  # Paper: "MLP with ReLU activations and dropout (0.1): R^d → 1024 → 512 → R"
+  mlp_hidden_dim: 1024
+  mlp_intermediate_dim: 512
+  
+  # Training: "train for 100 epochs using Adam with learning rate 10^-3 and batch size 16"
+  epochs: 100
+  learning_rate: 0.001
+  batch_size: 16
+  
+  # Normalization constants
+  # Paper: "normalized length reward using fixed constants μ_len=6.0 and σ_len=2.0"
+  length_mean: 6.0
+  length_std: 2.0
+  
+  server_port: 8000
+
+# -----------------------------------------------------------------------------
+# Warm Start Configuration (Stage 1: SFT)
+# Paper: "We collect 100 samples per bucket (300 total)"
+# -----------------------------------------------------------------------------
+warmstart:
+  # Samples per length category
+  samples_per_category: 100
+  
+  # Length categories (token ranges)
+  # Paper: "categorize samples into three token-budget buckets: [0,128], [129,256], [257,512]"
+  categories:
+    length_128: [0, 128]
+    length_256: [129, 256]
+    length_512: [257, 512]
+  
+  # SFT hyperparameters
+  # Paper: "train for 20 epochs with per-device batch size 2 and 4 gradient 
+  #         accumulation steps, learning rate 1×10^-5 with cosine schedule 
+  #         and warmup ratio 0.03"
+  sft_epochs: 20
+  sft_learning_rate: 0.00001  # 1e-5
+  sft_batch_size: 2
+  gradient_accumulation_steps: 4
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+
+# -----------------------------------------------------------------------------
+# GRPO Training Configuration (Stage 2: RL)
+# Paper: "AdamW (learning rate 5×10^-6), KL coefficient β=0.04, 
+#         clip parameter ε=0.2, group size N_sample=8 samples per meta-prompt,
+#         150 training iterations, max attacker generation length of 2048 tokens"
+# -----------------------------------------------------------------------------
+training:
+  # Token budget constraint
+  # Paper: "enforces L_in ≤ L_budget ∈ {128, 256, 512}"
+  max_puzzle_tokens: 128
+  
+  # Batch sizes
+  train_batch_size: 48
+  rollout_batch_size: 8  # Paper: "group size N_sample=8 samples per meta-prompt"
+  ppo_mini_batch_size: 24
+  
+  # Sequence lengths
+  max_prompt_length: 512
+  max_response_length: 2048  # Paper: "max attacker generation length of 2048 tokens"
+  
+  # Paper: "AdamW (learning rate 5×10^-6)"
+  learning_rate: 0.000005  # 5e-6
+  
+  # Paper: "KL coefficient β=0.04"
+  kl_loss_coef: 0.04
+  
+  # Paper: "clip parameter ε=0.2"
+  clip_param: 0.2
+  
+  entropy_coeff: 0
+  
+  # Diversity reward
+  # Paper: "We set the diversity weight w_div = 1.0"
+  enable_diversity: true
+  diversity_weight: 1.0
+  
+  # Training schedule
+  # Paper: "150 training iterations"
+  total_epochs: 150
+  save_freq: 10
+  test_freq: 5
+  
+  # Server ports
+  predictor_port: 8000
+  embedding_port: 8001
+
+# -----------------------------------------------------------------------------
+# GPU Allocation (8 GPU setup)
+# -----------------------------------------------------------------------------
+gpus:
+  predictor: "0,1"   # Length predictor server (DeepSeek-R1-32B)
+  embedding: "2,3"   # Embedding server (Qwen3-Embedding-8B)
+  training: "4,5,6,7"  # GRPO training
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+logging:
+  use_wandb: true
+  wandb_project: "reasoningbomb"
+  wandb_entity: null
+  log_level: "INFO"

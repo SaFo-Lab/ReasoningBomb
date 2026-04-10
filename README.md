@@ -1,8 +1,12 @@
-# ReasoningBomb: A Stealthy Denial-of-Service Attack by Inducing Pathologically Long Reasoning in Large Reasoning Models
+# [CCS 2026] ReasoningBomb: A Stealthy Denial-of-Service Attack by Inducing Pathologically Long Reasoning in Large Reasoning Models
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2602.00154)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://ReasoningBomb.github.io)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb)
+
+## News
+
+- **[2026/04]** ReasoningBomb has been accepted to **ACM CCS 2026**!
 
 This repository contains the implementation of **ReasoningBomb**, a reinforcement-learning framework that trains adversarial prompt generators to induce pathologically long reasoning traces in Large Reasoning Models (LRMs).
 

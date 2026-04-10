@@ -6,10 +6,6 @@
 
 This repository contains the implementation of **ReasoningBomb**, a reinforcement-learning framework that trains adversarial prompt generators to induce pathologically long reasoning traces in Large Reasoning Models (LRMs).
 
-## News
-
-**[2026/04]** ReasoningBomb has been accepted to **ACM CCS 2026**!
-
 ## Authors
 
 **[Xiaogeng Liu](https://xiaogeng-liu.com)**<sup>1*</sup>, **[Xinyan Wang](https://xinyan-wang-stat.github.io/)**<sup>2</sup>, **[Yechao Zhang](https://yechao-zhang.github.io)**<sup>3</sup>, **[Sanjay Kariyappa](https://sanjaykariyappa.github.io)**<sup>4</sup>, **[Chong Xiang](https://xiangchong.xyz)**<sup>4</sup>, **[Muhao Chen](https://muhaochen.github.io)**<sup>5</sup>, **[G. Edward Suh](https://tsg.ece.cornell.edu/people/g-edward-suh/)**<sup>4,6</sup>, **[Chaowei Xiao](https://xiaocw11.github.io)**<sup>1*</sup>
@@ -17,6 +13,11 @@ This repository contains the implementation of **ReasoningBomb**, a reinforcemen
 <sup>1</sup>Johns Hopkins University, <sup>2</sup>University of Wisconsin–Madison, <sup>3</sup>Nanyang Technological University, <sup>4</sup>NVIDIA, <sup>5</sup>University of California, Davis, <sup>6</sup>Cornell University
 
 *Corresponding authors: xliu316@jhu.edu, chaoweixiao@jhu.edu
+
+
+## News
+
+**[2026/04]** ReasoningBomb has been accepted to **ACM CCS 2026**!
 
 ## Installation
 

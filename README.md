@@ -3,7 +3,7 @@
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2602.00154)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://ReasoningBomb.github.io)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb)
-[![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface&logoColor=white)](https://huggingface.co/ReasoningBomb/models)
+[![Model](https://img.shields.io/badge/Model-HuggingFace-yellow)](https://huggingface.co/ReasoningBomb/models)
 
 This repository contains the implementation of **ReasoningBomb**, a reinforcement-learning framework that trains adversarial prompt generators to induce pathologically long reasoning traces in Large Reasoning Models (LRMs).
 

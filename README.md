@@ -74,7 +74,19 @@ Fine-tune attacker models for specific token budgets (128, 256, 512):
 bash scripts/3_train_sft.sh
 ```
 
-### 4. Train with GRPO (Stage 2)
+### 4. Prepare GRPO Training Data
+
+Build the attacker-prompt dataset that GRPO trains on. These prompts instruct the attacker model to generate puzzles — a small set of topic-conditioned meta-prompts (one base prompt + 14 topic hints) that are cycled to the requested size:
+
+```bash
+python prepare_data.py --output_dir ./outputs/data --num_train 10000 --num_val 1000
+```
+
+This writes `./outputs/data/train.parquet` and `./outputs/data/test.parquet`, where the GRPO launcher (`src/training/run.sh`) looks for them. If you skip this step, `run.sh` falls back to a tiny placeholder dataset that is only meant as a smoke test.
+
+The number of GRPO optimizer steps is `(num_train // train_batch_size) × total_epochs`, so `--num_train` controls the effective training length. Our reported runs used roughly 240 GRPO steps (the reward plateaus before that), so size `--num_train` / `trainer.total_training_steps` to land in that range rather than training for thousands of steps.
+
+### 5. Train with GRPO (Stage 2)
 
 Run the main GRPO training with constant-time surrogate reward:
 

@@ -3,6 +3,7 @@
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2602.00154)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://ReasoningBomb.github.io)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb)
+[![Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface&logoColor=white)](https://huggingface.co/ReasoningBomb/models)
 
 This repository contains the implementation of **ReasoningBomb**, a reinforcement-learning framework that trains adversarial prompt generators to induce pathologically long reasoning traces in Large Reasoning Models (LRMs).
 
@@ -99,6 +100,10 @@ bash scripts/4_train_grpo.sh --puzzle_max_len 128
 We provide a sample dataset of adversarial puzzles in `data/sample_puzzles.json` containing 30 puzzles (10 per token budget category: 128, 256, 512). These can be used for testing and demonstration purposes.
 
 The dataset is also available on [HuggingFace](https://huggingface.co/datasets/ReasoningBomb/ReasoningBomb).
+
+## Model Checkpoints
+
+The trained attacker model checkpoints (token budgets 128, 256, 512) are available on HuggingFace: [huggingface.co/ReasoningBomb](https://huggingface.co/ReasoningBomb/models). You can use them to run the attacker directly, without retraining.
 
 ## Project Structure
 

@@ -18,6 +18,7 @@ This repository contains the implementation of **ReasoningBomb**, a reinforcemen
 
 ## News
 
+**[2026/07]** ReasoningBomb received all three **ACM CCS 2026** artifact badges: **Artifacts Available**, **Artifacts Evaluated—Functional**, and **Results Reproduced**.\
 **[2026/04]** ReasoningBomb has been accepted to **ACM CCS 2026**!
 
 ## Installation
